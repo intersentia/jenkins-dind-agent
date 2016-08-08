@@ -14,9 +14,10 @@ ENV ALPINE_EDGE_COMMUNITY_REPO=http://dl-cdn.alpinelinux.org/alpine/edge/communi
     LANG=en_US.UTF-8 \
     LANGUAGE=en_US.UTF-8 \
     LC_ALL=en_US.UTF-8 \
-    SSH_KNOWN_HOSTS=github.com
+    SSH_KNOWN_HOSTS=github.com \
+    SBT_HOME /usr/local/sbt
 
-ENV PATH=${PATH}:${JAVA_HOME}/bin
+ENV PATH=${PATH}:${JAVA_HOME}/bin:${SBT_HOME}/bin
 
 # Please keep each package list in alphabetical order
 RUN apk --update add \
@@ -56,6 +57,8 @@ RUN apk --update add \
     && echo 'export PATH=$PATH:${JAVA_HOME}/bin' >> /etc/profile.d/java.sh \
     && ssh-keyscan $SSH_KNOWN_HOSTS | tee /etc/ssh/ssh_known_hosts \
     && echo 'Done'
+
+RUN curl -sL "http://dl.bintray.com/sbt/native-packages/sbt/0.13.12/sbt-0.13.12.tgz" | gunzip | tar -x -C /usr/local
 
 COPY wrapper.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/wrapper.sh
