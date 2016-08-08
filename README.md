@@ -1,7 +1,4 @@
 # Jenkins Docker-in-Docker Agent
-[![Docker Stars](https://img.shields.io/docker/stars/mesosphere/jenkins-dind.svg)][docker-hub]
-[![Docker Pulls](https://img.shields.io/docker/pulls/mesosphere/jenkins-dind.svg)][docker-hub]
-[![](https://images.microbadger.com/badges/image/mesosphere/jenkins-dind.svg)](http://microbadger.com/images/mesosphere/jenkins-dind "Get your own image badge on microbadger.com")
 
 A simple Docker image for running a Jenkins agent alongside its very
 own Docker daemon. This is useful if you're trying to run Jenkins agents on a
@@ -53,4 +50,4 @@ Mesos plugin within the Jenkins master's `config.xml` follows:
 </org.jenkinsci.plugins.mesos.MesosSlaveInfo>
 ```
 
-[docker-hub]: https://hub.docker.com/r/mesosphere/jenkins-dind
+[docker-hub]: https://hub.docker.com/r/intersentia/jenkins-dind-agent/
